@@ -38,7 +38,7 @@ class ModelBuku extends CI_Model
         $this->db->from('buku');
         return $this->db->get()->row($field);
     }
-
+    
     //manajemen kategori
     public function getKategori()
     {
@@ -73,5 +73,10 @@ class ModelBuku extends CI_Model
         $this->db->join('kategori','kategori.id = buku.id_kategori');
         $this->db->where($where);
         return $this->db->get();
+    }
+    
+    public function getLimitBuku(){
+        $this->db->limit(5);
+        return $this->db->get('buku');
     }
 }
